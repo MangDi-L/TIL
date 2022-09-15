@@ -14,7 +14,7 @@ import Foundation
  */
 print(String(format: "i'm, %@", "mangdi")) // i'm, mangdi
 print(String(format: "my age is %d", 5)) // my age is 5
-// %@으로 문자열을 넣어줄수 있고 @d로 숫자를 넣어줄수있다.
+// %@으로 문자열을 넣어줄수 있고 %d로 숫자를 넣어줄수있다.
 
 let habby = "playing game"
 let live = "korea"
