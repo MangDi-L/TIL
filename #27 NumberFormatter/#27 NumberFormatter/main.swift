@@ -27,6 +27,9 @@ let doubleArray1: [Double] = [123, 1234, 12345]
 
 for i in doubleArray1 {
     debugPrint(numberFormatter.string(for: i) ?? "")
+//     "123"
+//     "1,230"
+//     "12,300"
 }
 
 /*
