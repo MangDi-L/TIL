@@ -62,22 +62,22 @@ debugPrint(mangdi?.havePhone?.brand) // nil
 //class Person {
 //    let name: String
 //    unowned var havePhone: Phone?
-//    
+//
 //    init(name: String) {
 //        self.name =  name
 //    }
-//    
+//
 //    deinit { debugPrint("person 해제") }
 //}
 //
 //class Phone {
 //    let brand: String
 //    var attribution: Person?
-//    
+//
 //    init(brand: String) {
 //        self.brand = brand
 //    }
-//    
+//
 //    deinit { debugPrint("phone 해제") }
 //}
 //
