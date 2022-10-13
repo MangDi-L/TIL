@@ -18,8 +18,8 @@ class ViewController: UIViewController {
         
         title = "asdfasdf"
         print("viewDidLoad")
-        testCG()
-//        testUI()
+//        testCG()
+        testUI()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -43,12 +43,16 @@ class ViewController: UIViewController {
     }
     
     private func testCG() {
-        let rect = CGRect(x: <#T##CGFloat#>, y: <#T##CGFloat#>, width: <#T##CGFloat#>, height: <#T##CGFloat#>)
+        let rect = CGRect(x: 100, y: 100, width: 200, height: 200)
+        let testView: UIView = UIView(frame: rect)
+        testView.backgroundColor = .blue
+        self.view.addSubview(testView)
     }
     
     private func testUI() {
-        firstView.frame.origin = CGPoint(x: 30, y: 400)
-        firstView.frame.size = CGSize(width: 300, height: 300)
+//        firstView.frame.origin = CGPoint(x: 30, y: 400)
+//        firstView.frame.size = CGSize(width: 300, height: 300)
+        firstView.frame = CGRect(x: 30, y: 400, width: 300, height: 300)
         firstView.bounds.origin = CGPoint(x: 30, y: 30)
         debugPrint(secondView.frame)
         secondView.frame.origin = CGPoint(x: 30, y: 30)
