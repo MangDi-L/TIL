@@ -52,13 +52,18 @@ class ViewController: UIViewController {
     private func testUI() {
 //        firstView.frame.origin = CGPoint(x: 30, y: 400)
 //        firstView.frame.size = CGSize(width: 300, height: 300)
-        firstView.frame = CGRect(x: 30, y: 400, width: 300, height: 300)
+//        firstView.frame = CGRect(x: 30, y: 400, width: 300, height: 300)
+//        firstView.bounds.origin = CGPoint(x: 30, y: 30)
+//        debugPrint(secondView.frame)
+//        secondView.frame.origin = CGPoint(x: 30, y: 30)
+//        debugPrint(secondView.frame)
+//        secondView.bounds.origin = CGPoint(x: -60, y: -60)
+//        secondView.clipsToBounds = true
+//        firstView.transform = .init(rotationAngle: 45)
+//        firstView.bounds.size = CGSize(width: 300, height: 300)
+//        firstView.frame.size = CGSize(width: 300, height: 300)
         firstView.bounds.origin = CGPoint(x: 30, y: 30)
-        debugPrint(secondView.frame)
-        secondView.frame.origin = CGPoint(x: 30, y: 30)
-        debugPrint(secondView.frame)
         secondView.bounds.origin = CGPoint(x: -60, y: -60)
-        secondView.clipsToBounds = true
     }
     
     @IBAction func touchUpTestButton(sender: UIButton) {
