@@ -33,6 +33,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+//        tableView.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0)
         tableView.dataSource = self
         tableView.delegate = self
     }
@@ -57,18 +58,18 @@ extension ViewController: UITableViewDataSource {
         guard let foodType = FoodType(rawValue: section) else { return nil }
         return foodType.sectionName
     }
-    
+
     func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
         guard let foodType = FoodType(rawValue: section) else { return nil }
         return foodType.sectionName
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 100
+        return 30
     }
-    
+
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 100
+        return 30
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
