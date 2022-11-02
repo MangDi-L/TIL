@@ -36,4 +36,7 @@ let blue = DispatchWorkItem {
 // 4
 //DispatchQueue.main.async(execute: yellow)
 //DispatchQueue.global().sync(execute: blue)
-//DispatchQueue.global().async(execute: red)
+//DispatchQueue.global().asyncAndWait(execute: red)
+
+DispatchQueue.global().asyncAfter(deadline: .now() + 0.7, execute: yellow)
+DispatchQueue.global().asyncAfter(deadline: .now() + 1, execute: red)
