@@ -21,7 +21,7 @@ class ViewController: UIViewController {
         let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(ViewController.handleSwipeRightGesture(recognizer:)))
         swipeRight.direction = UISwipeGestureRecognizer.Direction.right
         self.view.addGestureRecognizer(swipeRight)
-        
+
         let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(ViewController.handleSwipeLeftGesture(recognizer:)))
         swipeLeft.direction = UISwipeGestureRecognizer.Direction.left
         self.view.addGestureRecognizer(swipeLeft)
@@ -29,14 +29,35 @@ class ViewController: UIViewController {
         swipeRight.direction = .right
         swipeLeft.direction = .left
 
-        label.gestureRecognizers = [swipeRight, swipeLeft]
+        view.gestureRecognizers = [swipeRight, swipeLeft]
+        
+//        UIPanGestureRecognizer
+//        let swipeRight = UIPanGestureRecognizer(target: self, action: #selector(ViewController.handleSwipeRightGesture(recognizer:)))
+//        swipeRight.direction = UISwipeGestureRecognizer.Direction.right
+//        self.view.addGestureRecognizer(swipeRight)
     }
+    
+    
     
     // 2번문제
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let a = touches.first?.location(in: view) else { return }
         positionX.text = "x: \(a.x)"
         positionY.text = "y: \(a.y)"
+
+//        guard let previousPosition = touches.first?.previousLocation(in: view) else {
+//            return
+//        }
+
+//        if previousPosition.x < a.x {
+//            label.text = "right"
+//        } else {
+//            label.text = "left"
+//        }
+    }
+
+    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
+        print("캔슬됨")
     }
 }
 
