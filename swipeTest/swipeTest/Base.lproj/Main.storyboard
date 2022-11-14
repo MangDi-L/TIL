@@ -37,6 +37,56 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dV5-Xq-H0N" customClass="CustomView1" customModule="swipeTest" customModuleProvider="target">
+                                <rect key="frame" x="57" y="209" width="312" height="231"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qTg-k8-lXX" customClass="CustomView2" customModule="swipeTest" customModuleProvider="target">
+                                        <rect key="frame" x="78" y="23" width="172" height="102"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" systemColor="systemOrangeColor"/>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemGreenColor"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tO0-bb-trJ" customClass="CustomView3" customModule="swipeTest" customModuleProvider="target">
+                                <rect key="frame" x="103" y="384" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tZ3-Yp-4Ip" customClass="CustomView6" customModule="swipeTest" customModuleProvider="target">
+                                        <rect key="frame" x="21" y="8" width="199" height="40"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" systemColor="systemGray2Color"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DiQ-Y7-SfK" customClass="CustomView7" customModule="swipeTest" customModuleProvider="target">
+                                        <rect key="frame" x="26" y="68" width="188" height="52"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" systemColor="systemMintColor"/>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemPurpleColor"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QaM-lN-vLe" customClass="CustomView5" customModule="swipeTest" customModuleProvider="target">
+                                <rect key="frame" x="103" y="627" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OpN-tq-q6S" customClass="CustomView4" customModule="swipeTest" customModuleProvider="target">
+                                        <rect key="frame" x="51" y="-49" width="139" height="113"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="smk-8h-Prd" customClass="CustomButton" customModule="swipeTest" customModuleProvider="target">
+                                                <rect key="frame" x="36" y="41" width="67" height="31"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" systemColor="systemPinkColor"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemYellowColor"/>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemIndigoColor"/>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -45,6 +95,14 @@
                         <outlet property="label" destination="D3r-jQ-xnU" id="AJT-HJ-Cjj"/>
                         <outlet property="positionX" destination="MqO-Yw-rCx" id="Ruh-2d-u9d"/>
                         <outlet property="positionY" destination="ASo-QY-t7D" id="hCb-mF-6p5"/>
+                        <outlet property="testButton" destination="smk-8h-Prd" id="3iW-Jb-Nrl"/>
+                        <outlet property="testView1" destination="dV5-Xq-H0N" id="8U1-dn-b7X"/>
+                        <outlet property="testView2" destination="qTg-k8-lXX" id="7Qh-IQ-4PI"/>
+                        <outlet property="testView3" destination="tO0-bb-trJ" id="loQ-X3-V5z"/>
+                        <outlet property="testView4" destination="OpN-tq-q6S" id="1HJ-ir-nNR"/>
+                        <outlet property="testView5" destination="QaM-lN-vLe" id="cVH-3f-5HA"/>
+                        <outlet property="testView6" destination="tZ3-Yp-4Ip" id="WQs-2f-AC1"/>
+                        <outlet property="testView7" destination="DiQ-Y7-SfK" id="a1P-8T-bQb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -55,6 +113,30 @@
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray2Color">
+            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemIndigoColor">
+            <color red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemMintColor">
+            <color red="0.0" green="0.7803921568627451" blue="0.74509803921568629" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemOrangeColor">
+            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemPinkColor">
+            <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemPurpleColor">
+            <color red="0.68627450980392157" green="0.32156862745098042" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemYellowColor">
+            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

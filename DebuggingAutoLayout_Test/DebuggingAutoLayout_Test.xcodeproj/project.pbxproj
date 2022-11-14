@@ -13,6 +13,8 @@
 		0958B7BE291A1D4300229711 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0958B7BC291A1D4300229711 /* Main.storyboard */; };
 		0958B7C0291A1D4600229711 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0958B7BF291A1D4600229711 /* Assets.xcassets */; };
 		0958B7C3291A1D4600229711 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0958B7C1291A1D4600229711 /* LaunchScreen.storyboard */; };
+		09D96DF8291B35970002FD60 /* AnchorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D96DF7291B35970002FD60 /* AnchorViewController.swift */; };
+		09D96DFA291B91C90002FD60 /* ConstranitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D96DF9291B91C90002FD60 /* ConstranitViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		0958B7BF291A1D4600229711 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0958B7C2291A1D4600229711 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0958B7C4291A1D4600229711 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		09D96DF7291B35970002FD60 /* AnchorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnchorViewController.swift; sourceTree = "<group>"; };
+		09D96DF9291B91C90002FD60 /* ConstranitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstranitViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +67,8 @@
 				0958B7BF291A1D4600229711 /* Assets.xcassets */,
 				0958B7C1291A1D4600229711 /* LaunchScreen.storyboard */,
 				0958B7C4291A1D4600229711 /* Info.plist */,
+				09D96DF7291B35970002FD60 /* AnchorViewController.swift */,
+				09D96DF9291B91C90002FD60 /* ConstranitViewController.swift */,
 			);
 			path = DebuggingAutoLayout_Test;
 			sourceTree = "<group>";
@@ -139,8 +145,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				0958B7BB291A1D4300229711 /* ViewController.swift in Sources */,
+				09D96DFA291B91C90002FD60 /* ConstranitViewController.swift in Sources */,
 				0958B7B7291A1D4300229711 /* AppDelegate.swift in Sources */,
 				0958B7B9291A1D4300229711 /* SceneDelegate.swift in Sources */,
+				09D96DF8291B35970002FD60 /* AnchorViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

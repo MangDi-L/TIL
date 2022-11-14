@@ -12,10 +12,21 @@ class ViewController: UIViewController {
     @IBOutlet var label: UILabel!
     @IBOutlet var positionX: UILabel!
     @IBOutlet var positionY: UILabel!
+    @IBOutlet var testView1: UIView!
+    @IBOutlet var testView2: UIView!
+    @IBOutlet var testView3: UIView!
+    @IBOutlet var testView4: UIView!
+    @IBOutlet var testView5: UIView!
+    @IBOutlet var testView6: UIView!
+    @IBOutlet var testView7: UIView!
+    @IBOutlet var testButton: UIButton!
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+//        let click = UITapGestureRecognizer(target: self, action: #selector(ViewController.handleClickGesture(recognizer:)))
+//        self.testView1.addGestureRecognizer(click)
         
         // 1번문제
         let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(ViewController.handleSwipeRightGesture(recognizer:)))
@@ -29,7 +40,7 @@ class ViewController: UIViewController {
         swipeRight.direction = .right
         swipeLeft.direction = .left
 
-        view.gestureRecognizers = [swipeRight, swipeLeft]
+//        view.gestureRecognizers = [swipeRight, swipeLeft, click]
         
 //        UIPanGestureRecognizer
 //        let swipeRight = UIPanGestureRecognizer(target: self, action: #selector(ViewController.handleSwipeRightGesture(recognizer:)))
@@ -67,9 +78,23 @@ extension ViewController {
         label.text = "오른쪽"
         print("This swipe is right")
     }
+    
     @objc func handleSwipeLeftGesture(recognizer: UISwipeGestureRecognizer) {
         label.text = "왼쪽"
         print("This swipe is left")
+    }
+    
+    @objc func handleClickGesture(recognizer: UITapGestureRecognizer) {
+        guard let color = testView1.backgroundColor?.accessibilityName else {
+            return
+        }
+        if color == "green" {
+            testView1.backgroundColor = .black
+        }
+        if color == "black" {
+            testView1.backgroundColor = .systemGreen
+        }
+        print("색 전환")
     }
 }
 
