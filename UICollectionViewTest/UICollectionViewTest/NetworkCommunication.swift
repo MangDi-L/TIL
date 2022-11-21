@@ -7,15 +7,21 @@
 
 import Foundation
 
+enum APIError: Error {
+    case urlConnectionErrer
+    case statusCodeError
+    case jsonDecodingError
+}
+
 struct NetworkCommunication {
     let session = URLSession(configuration: .default)
     
-    func requestHealthChecker(url: String, completionHandler: @escaping (Result<HTTPURLResponse, Error>) -> ()) {
+    func requestHealthChecker(url: String, completionHandler: @escaping (Result<HTTPURLResponse, APIError>) -> ()) {
         guard let url: URL = URL(string: url) else { return }
         
         let task: URLSessionDataTask = session.dataTask(with: url) { _, response, error in
-            if let error = error {
-                print(error.localizedDescription)
+            if error != nil {
+                completionHandler(.failure(.urlConnectionErrer))
                 return
             }
             
@@ -29,19 +35,20 @@ struct NetworkCommunication {
     func requestProductsInformation<T: Decodable>(
         url: String,
         type: T.Type,
-        completionHandler: @escaping (Result<Any, Error>) -> ()
+        completionHandler: @escaping (Result<Any, APIError>) -> ()
     ) {
         guard let url: URL = URL(string: url) else { return }
         
         let task: URLSessionDataTask = session.dataTask(with: url) { data, response, error in
             if let error = error {
-                print(error.localizedDescription)
+                completionHandler(.failure(.urlConnectionErrer))
                 return
             }
             
             if let response = response as? HTTPURLResponse {
                 if !(200...299).contains(response.statusCode) {
-                    print("URL요청 실패 : \(response.statusCode)")
+                    print("URL요청 실패 : 코드\(response.statusCode)")
+                    completionHandler(.failure(.statusCodeError))
                     return
                 }
             }
@@ -60,7 +67,7 @@ struct NetworkCommunication {
                     completionHandler(.success(detailProduct))
                 }
             } catch {
-                print(error.localizedDescription)
+                completionHandler(.failure(.jsonDecodingError))
             }
         }
         task.resume()

@@ -20,6 +20,10 @@ class CustomCell: UICollectionViewCell {
         
     }
     
+    override func prepareForReuse() {
+
+    }
+    
     func configureCell(imageSource: String, name: String, price: Int, discountedPrice: Int, stock: Int) {
         let imageUrl = URL(string: imageSource)!
         do {

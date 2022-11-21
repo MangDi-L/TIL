@@ -14,7 +14,7 @@ struct SearchListProducts: Codable {
     let pages: [SearchListPage]
 }
 
-struct SearchListPage: Codable {
+struct SearchListPage: Equatable, Codable {
     let id, vendorID: Int
     let vendorName, name, pageDescription: String
     let thumbnail: String

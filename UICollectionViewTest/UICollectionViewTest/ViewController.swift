@@ -17,38 +17,36 @@ enum ApiUrl {
     }
     
     enum Query {
-        static let first = "?page_no=1&items_per_page=100"
+        static let first = "?page_no=2&items_per_page="
     }
 }
 
 class ViewController: UIViewController {
-    
-    @IBOutlet var collectionView: UICollectionView!
-    var searchListPages: [SearchListPage] = []
-    let group = DispatchGroup()
-//    var searchListPages: [SearchListPage] = [] {
-//        willSet(newValue) {
-//            print(searchListPages)
-////            print("새로운값",newValue)
-//        }
-//
-//        didSet(oldValue) {
-//            print(searchListPages)
-//        }
-//    }
-    var detailProduct: DetailProduct? = nil
+    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
     let networkCommunication: NetworkCommunication = NetworkCommunication()
+    let flowLayout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+    let group = DispatchGroup()
+    var detailProduct: DetailProduct? = nil
+    var searchListPages: [SearchListPage] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        settingSegmentedControll()
         collectionView.register(UINib(nibName: "CustomCell", bundle: nil), forCellWithReuseIdentifier: "customCell")
         getResponseAboutHealChecker()
         DispatchQueue.global().async(group: self.group) {
             self.getDataFromUrl()
         }
         
-        print(searchListPages)
+        flowLayout.sectionInset = UIEdgeInsets.init(top: 8, left: 8, bottom: 8, right: 8)
+        flowLayout.minimumInteritemSpacing = CGFloat(8)
+        let itemWidth = view.bounds.width/100*45
+        let itemHeight = itemWidth * 1.5
+        flowLayout.itemSize = CGSize(width: itemWidth, height: itemHeight)
+        flowLayout.minimumInteritemSpacing = CGFloat(0)
+        collectionView.collectionViewLayout = flowLayout
     }
     
     private func getResponseAboutHealChecker() {
@@ -64,7 +62,7 @@ class ViewController: UIViewController {
     
     private func getDataFromUrl() {
         networkCommunication.requestProductsInformation(
-            url: ApiUrl.host+ApiUrl.Path.products+ApiUrl.Query.first,
+            url: ApiUrl.host+ApiUrl.Path.products+ApiUrl.Query.first+"100",
             type: SearchListProducts.self) { result in
                 switch result {
                 case .success(let data):
@@ -73,12 +71,21 @@ class ViewController: UIViewController {
                     DispatchQueue.main.async {
                         self.collectionView.reloadData()
                     }
-                    
-//                    print(decodingData.pages[2])
-                case .failure(_):
-                    print("fail")
+                case .failure(let error):
+                    print("실패",error.localizedDescription)
                 }
             }
+    }
+    
+    private func settingSegmentedControll() {
+        segmentedControl.setWidth(view.bounds.width/4, forSegmentAt: 0)
+        segmentedControl.setWidth(view.bounds.width/4, forSegmentAt: 1)
+        segmentedControl.layer.borderColor = UIColor.systemBlue.cgColor
+        segmentedControl.layer.borderWidth = CGFloat(2)
+        segmentedControl.selectedSegmentTintColor = UIColor.systemBlue
+        segmentedControl.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0)
+        segmentedControl.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white], for: UIControl.State.selected)
+        segmentedControl.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.systemBlue], for: UIControl.State.normal)
     }
 }
 
@@ -88,21 +95,23 @@ extension ViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return self.searchListPages.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let customCell: CustomCell = collectionView.dequeueReusableCell(withReuseIdentifier: "customCell", for: indexPath) as! CustomCell
-        
-//        group.wait()
-        DispatchQueue.main.async {
-            if indexPath == collectionView.indexPath(for: customCell) {
+        let customCell = collectionView.dequeueReusableCell(withReuseIdentifier: "customCell", for: indexPath) as! CustomCell
+        customCell.layer.cornerRadius = CGFloat(10)
+        customCell.layer.borderWidth = CGFloat(3)
+        customCell.layer.borderColor = UIColor.systemGray3.cgColor
+        group.notify(queue: .main) {
+            if self.searchListPages != [] && indexPath == collectionView.indexPath(for: customCell) {
                 customCell.configureCell(imageSource: self.searchListPages[indexPath.item].thumbnail,
                                          name: self.searchListPages[indexPath.item].name,
                                          price: Int(self.searchListPages[indexPath.item].price),
                                          discountedPrice: Int(self.searchListPages[indexPath.item].discountedPrice),
                                          stock: self.searchListPages[indexPath.item].stock)
             }
+            
         }
         return customCell
     }
