@@ -15,6 +15,7 @@
 		090CEEF9292216A90031FFAB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 090CEEF7292216A90031FFAB /* LaunchScreen.storyboard */; };
 		090CEF02292219140031FFAB /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090CEF00292219140031FFAB /* CustomCell.swift */; };
 		090CEF03292219140031FFAB /* CustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 090CEF01292219140031FFAB /* CustomCell.xib */; };
+		09CFC53B292B156A00B6F69B /* CustomListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09CFC53A292B156A00B6F69B /* CustomListCell.xib */; };
 		09DAE7C429270F350076D025 /* NetworkCommunication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DAE7C329270F350076D025 /* NetworkCommunication.swift */; };
 		09DAE7C629270F950076D025 /* SearchListProducts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DAE7C529270F950076D025 /* SearchListProducts.swift */; };
 		09DAE7C829270FAD0076D025 /* DetailProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DAE7C729270FAD0076D025 /* DetailProduct.swift */; };
@@ -31,6 +32,7 @@
 		090CEEFA292216A90031FFAB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		090CEF00292219140031FFAB /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
 		090CEF01292219140031FFAB /* CustomCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomCell.xib; sourceTree = "<group>"; };
+		09CFC53A292B156A00B6F69B /* CustomListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomListCell.xib; sourceTree = "<group>"; };
 		09DAE7C329270F350076D025 /* NetworkCommunication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkCommunication.swift; sourceTree = "<group>"; };
 		09DAE7C529270F950076D025 /* SearchListProducts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchListProducts.swift; sourceTree = "<group>"; };
 		09DAE7C729270FAD0076D025 /* DetailProduct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailProduct.swift; sourceTree = "<group>"; };
@@ -75,6 +77,7 @@
 				090CEEFA292216A90031FFAB /* Info.plist */,
 				090CEF00292219140031FFAB /* CustomCell.swift */,
 				090CEF01292219140031FFAB /* CustomCell.xib */,
+				09CFC53A292B156A00B6F69B /* CustomListCell.xib */,
 				09DAE7C329270F350076D025 /* NetworkCommunication.swift */,
 				09DAE7C529270F950076D025 /* SearchListProducts.swift */,
 				09DAE7C729270FAD0076D025 /* DetailProduct.swift */,
@@ -140,6 +143,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				09CFC53B292B156A00B6F69B /* CustomListCell.xib in Resources */,
 				090CEEF9292216A90031FFAB /* LaunchScreen.storyboard in Resources */,
 				090CEEF6292216A90031FFAB /* Assets.xcassets in Resources */,
 				090CEF03292219140031FFAB /* CustomCell.xib in Resources */,

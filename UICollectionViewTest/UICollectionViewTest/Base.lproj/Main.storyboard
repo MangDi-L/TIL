@@ -16,8 +16,24 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hq3-zX-qjA" userLabel="greenView">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="89.5"/>
+                                <subviews>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="MUM-sn-FdH">
+                                        <rect key="frame" x="156.5" y="43" width="101" height="32"/>
+                                        <segments>
+                                            <segment title="LIST"/>
+                                            <segment title="GRID"/>
+                                        </segments>
+                                    </segmentedControl>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemGray5Color"/>
+                                <constraints>
+                                    <constraint firstItem="MUM-sn-FdH" firstAttribute="centerX" secondItem="Hq3-zX-qjA" secondAttribute="centerX" id="NJo-qJ-hRp"/>
+                                </constraints>
+                            </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Ean-xn-I8r">
-                                <rect key="frame" x="0.0" y="83" width="414" height="779"/>
+                                <rect key="frame" x="0.0" y="97.5" width="414" height="764.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="tKO-ri-3kK">
                                     <size key="itemSize" width="128" height="128"/>
@@ -31,23 +47,20 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="6FJ-eg-8DX"/>
                                 </connections>
                             </collectionView>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="MUM-sn-FdH">
-                                <rect key="frame" x="156.5" y="44" width="101" height="32"/>
-                                <segments>
-                                    <segment title="LIST"/>
-                                    <segment title="GRID"/>
-                                </segments>
-                            </segmentedControl>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Ean-xn-I8r" secondAttribute="trailing" id="1wl-ZN-7Tu"/>
+                            <constraint firstItem="Hq3-zX-qjA" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="2tp-OO-Gub"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Ean-xn-I8r" secondAttribute="bottom" id="Dbf-A2-Fvj"/>
                             <constraint firstItem="Ean-xn-I8r" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Gah-7i-egQ"/>
-                            <constraint firstItem="MUM-sn-FdH" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="KnS-Ut-Pjn"/>
-                            <constraint firstItem="MUM-sn-FdH" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="awq-xy-Oa1"/>
-                            <constraint firstItem="Ean-xn-I8r" firstAttribute="top" secondItem="MUM-sn-FdH" secondAttribute="bottom" constant="8" id="uBJ-Tq-DiV"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Hq3-zX-qjA" secondAttribute="trailing" id="INJ-K4-xNi"/>
+                            <constraint firstItem="Hq3-zX-qjA" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.1" id="Rd3-h5-eXN"/>
+                            <constraint firstAttribute="top" secondItem="Hq3-zX-qjA" secondAttribute="top" id="c6J-Lh-2AY"/>
+                            <constraint firstItem="Ean-xn-I8r" firstAttribute="top" secondItem="Hq3-zX-qjA" secondAttribute="bottom" constant="8" id="cJZ-kC-cLH"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="top" secondItem="MUM-sn-FdH" secondAttribute="bottom" constant="-30" id="eL1-L4-ACz"/>
+                            <constraint firstItem="Hq3-zX-qjA" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="wgY-6m-GmQ"/>
                         </constraints>
                     </view>
                     <connections>
@@ -63,6 +76,9 @@
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray5Color">
+            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

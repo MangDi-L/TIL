@@ -26,6 +26,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     let networkCommunication: NetworkCommunication = NetworkCommunication()
     let flowLayout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+    let listLayout = UICollectionLayoutListConfiguration(appearance: .plain)
     let group = DispatchGroup()
     var detailProduct: DetailProduct? = nil
     var searchListPages: [SearchListPage] = []
@@ -35,11 +36,51 @@ class ViewController: UIViewController {
         
         settingSegmentedControll()
         collectionView.register(UINib(nibName: "CustomCell", bundle: nil), forCellWithReuseIdentifier: "customCell")
+        collectionView.register(UINib(nibName: "CustomListCell", bundle: nil), forCellWithReuseIdentifier: "customListCell")
         getResponseAboutHealChecker()
-        DispatchQueue.global().async(group: self.group) {
-            self.getDataFromUrl()
+        getDataFromUrl { [self] pageData in
+            searchListPages = pageData
+            DispatchQueue.main.async { [self] in
+                collectionView.reloadData()
+            }
         }
+        segmentedControl.addTarget(self, action: #selector(changeSegment(sender:)), for: UIControl.Event.valueChanged)
+        settingCollectionViewLayoutList()
+    }
+    
+    @objc private func changeSegment(sender: UISegmentedControl) {
+        if sender.selectedSegmentIndex == 0 {
+            settingCollectionViewLayoutList()
+            collectionView.layoutIfNeeded()
+            print("리스트뷰로 체인지")
+        } else {
+            settingCollectionViewLayoutGrid()
+            collectionView.layoutIfNeeded()
+            print("그리드뷰로 체인지")
+        }
+    }
+    
+    private func settingCollectionViewLayoutList() {
+        let layoutSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
+                                          heightDimension: .fractionalHeight(0.1))
+        let layoutItem = NSCollectionLayoutItem(layoutSize: layoutSize)
+        let layoutGroup = NSCollectionLayoutGroup.vertical(layoutSize: layoutSize,
+                                                           subitem: layoutItem,
+                                                           count: 1)
+        let layoutSection = NSCollectionLayoutSection(group: layoutGroup)
+        let compositionalLayout = UICollectionViewCompositionalLayout(section: layoutSection)
+        collectionView.collectionViewLayout = compositionalLayout
         
+//        flowLayout.sectionInset = UIEdgeInsets.init(top: 8, left: 8, bottom: 8, right: 8)
+////        flowLayout.minimumInteritemSpacing = CGFloat(0)
+//        let itemWidth = view.bounds.width
+//        let itemHeight = view.bounds.height/10
+//        flowLayout.itemSize = CGSize(width: itemWidth, height: itemHeight)
+//        collectionView.collectionViewLayout = flowLayout
+        self.collectionView.reloadData()
+    }
+    
+    private func settingCollectionViewLayoutGrid() {
         flowLayout.sectionInset = UIEdgeInsets.init(top: 8, left: 8, bottom: 8, right: 8)
         flowLayout.minimumInteritemSpacing = CGFloat(8)
         let itemWidth = view.bounds.width/100*45
@@ -47,6 +88,7 @@ class ViewController: UIViewController {
         flowLayout.itemSize = CGSize(width: itemWidth, height: itemHeight)
         flowLayout.minimumInteritemSpacing = CGFloat(0)
         collectionView.collectionViewLayout = flowLayout
+        self.collectionView.reloadData()
     }
     
     private func getResponseAboutHealChecker() {
@@ -60,17 +102,18 @@ class ViewController: UIViewController {
         }
     }
     
-    private func getDataFromUrl() {
+    private func getDataFromUrl(completionHandler: @escaping ([SearchListPage]) -> ()) {
         networkCommunication.requestProductsInformation(
             url: ApiUrl.host+ApiUrl.Path.products+ApiUrl.Query.first+"100",
             type: SearchListProducts.self) { result in
                 switch result {
                 case .success(let data):
                     guard let decodingData = data as? SearchListProducts else { return }
-                    self.searchListPages = decodingData.pages
-                    DispatchQueue.main.async {
-                        self.collectionView.reloadData()
-                    }
+                    completionHandler(decodingData.pages)
+//                    self.searchListPages = decodingData.pages /* 문제있다! */
+//                    DispatchQueue.main.async {
+//                        self.collectionView.reloadData() /* 문제있다! */
+//                    }
                 case .failure(let error):
                     print("실패",error.localizedDescription)
                 }
@@ -99,20 +142,25 @@ extension ViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let customCell = collectionView.dequeueReusableCell(withReuseIdentifier: "customCell", for: indexPath) as! CustomCell
-        customCell.layer.cornerRadius = CGFloat(10)
-        customCell.layer.borderWidth = CGFloat(3)
-        customCell.layer.borderColor = UIColor.systemGray3.cgColor
-        group.notify(queue: .main) {
-            if self.searchListPages != [] && indexPath == collectionView.indexPath(for: customCell) {
-                customCell.configureCell(imageSource: self.searchListPages[indexPath.item].thumbnail,
-                                         name: self.searchListPages[indexPath.item].name,
-                                         price: Int(self.searchListPages[indexPath.item].price),
-                                         discountedPrice: Int(self.searchListPages[indexPath.item].discountedPrice),
-                                         stock: self.searchListPages[indexPath.item].stock)
-            }
-            
+        let customCell: CustomCell
+        if segmentedControl.selectedSegmentIndex == 0 {
+            customCell = collectionView.dequeueReusableCell(withReuseIdentifier: "customListCell", for: indexPath) as! CustomCell
+        } else {
+            customCell = collectionView.dequeueReusableCell(withReuseIdentifier: "customCell", for: indexPath) as! CustomCell
+            customCell.layer.cornerRadius = CGFloat(10)
+            customCell.layer.borderWidth = CGFloat(3)
+            customCell.layer.borderColor = UIColor.systemGray3.cgColor
         }
+        
+        // 100마넌짜리 코드 && indexPath == collectionView.indexPath(for: customCell)
+//        if self.searchListPages != [] {
+            customCell.configureCell(imageSource: self.searchListPages[indexPath.item].thumbnail,
+                                     name: self.searchListPages[indexPath.item].name,
+                                     price: Int(self.searchListPages[indexPath.item].price),
+                                     discountedPrice: Int(self.searchListPages[indexPath.item].discountedPrice),
+                                     stock: self.searchListPages[indexPath.item].stock)
+//        }
+        
         return customCell
     }
     

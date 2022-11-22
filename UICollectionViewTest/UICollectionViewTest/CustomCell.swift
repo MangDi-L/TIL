@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CustomCell: UICollectionViewCell {
+class CustomCell: UICollectionViewListCell {
     
     @IBOutlet weak var thumbnailImage: UIImageView!
     @IBOutlet weak var name: UILabel!
@@ -21,7 +21,13 @@ class CustomCell: UICollectionViewCell {
     }
     
     override func prepareForReuse() {
-
+        super.prepareForReuse()
+        
+        thumbnailImage.image = nil
+        name.text = nil
+        price.text = nil
+        discountedPrice.text = nil
+        stock.text = nil
     }
     
     func configureCell(imageSource: String, name: String, price: Int, discountedPrice: Int, stock: Int) {
