@@ -31,7 +31,7 @@ class CustomCell: UICollectionViewListCell {
     }
     
     func configureCell(imageSource: String, name: String, price: Int, discountedPrice: Int, stock: Int) {
-        let imageUrl = URL(string: imageSource)!
+        guard let imageUrl = URL(string: imageSource) else { return }
         do {
             let imageData = try Data(contentsOf: imageUrl)
             self.thumbnailImage.image = UIImage(data: imageData)

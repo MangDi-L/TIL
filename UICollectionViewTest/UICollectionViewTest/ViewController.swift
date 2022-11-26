@@ -48,6 +48,12 @@ class ViewController: UIViewController {
         settingCollectionViewLayoutList()
     }
     
+//    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+//        super.viewWillTransition(to: size, with: coordinator)
+//
+//
+//    }
+    
     @objc private func changeSegment(sender: UISegmentedControl) {
         if sender.selectedSegmentIndex == 0 {
             settingCollectionViewLayoutList()
@@ -62,11 +68,13 @@ class ViewController: UIViewController {
     
     private func settingCollectionViewLayoutList() {
         let layoutSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
-                                          heightDimension: .fractionalHeight(0.1))
+                                                heightDimension: .fractionalHeight(1))
         let layoutItem = NSCollectionLayoutItem(layoutSize: layoutSize)
-        let layoutGroup = NSCollectionLayoutGroup.vertical(layoutSize: layoutSize,
-                                                           subitem: layoutItem,
-                                                           count: 1)
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
+                                               heightDimension: .absolute(70))
+        let layoutGroup = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize,
+                                                           subitems: [layoutItem])
+//        layoutGroup.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10)
         let layoutSection = NSCollectionLayoutSection(group: layoutGroup)
         let compositionalLayout = UICollectionViewCompositionalLayout(section: layoutSection)
         collectionView.collectionViewLayout = compositionalLayout
@@ -81,6 +89,7 @@ class ViewController: UIViewController {
     }
     
     private func settingCollectionViewLayoutGrid() {
+        // 20:10 에 NSDirectionalEdgeInsets 주는거나옴
         flowLayout.sectionInset = UIEdgeInsets.init(top: 8, left: 8, bottom: 8, right: 8)
         flowLayout.minimumInteritemSpacing = CGFloat(8)
         let itemWidth = view.bounds.width/100*45
@@ -110,10 +119,10 @@ class ViewController: UIViewController {
                 case .success(let data):
                     guard let decodingData = data as? SearchListProducts else { return }
                     completionHandler(decodingData.pages)
-//                    self.searchListPages = decodingData.pages /* 문제있다! */
-//                    DispatchQueue.main.async {
-//                        self.collectionView.reloadData() /* 문제있다! */
-//                    }
+                    self.searchListPages = decodingData.pages /* 문제있다! */
+                    DispatchQueue.main.async {
+                        self.collectionView.reloadData() /* 문제있다! */
+                    }
                 case .failure(let error):
                     print("실패",error.localizedDescription)
                 }
@@ -144,9 +153,9 @@ extension ViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let customCell: CustomCell
         if segmentedControl.selectedSegmentIndex == 0 {
-            customCell = collectionView.dequeueReusableCell(withReuseIdentifier: "customListCell", for: indexPath) as! CustomCell
+            customCell = collectionView.dequeueReusableCell(withReuseIdentifier: "customListCell", for: indexPath) as? CustomCell ?? CustomCell()
         } else {
-            customCell = collectionView.dequeueReusableCell(withReuseIdentifier: "customCell", for: indexPath) as! CustomCell
+            customCell = collectionView.dequeueReusableCell(withReuseIdentifier: "customCell", for: indexPath) as? CustomCell ?? CustomCell()
             customCell.layer.cornerRadius = CGFloat(10)
             customCell.layer.borderWidth = CGFloat(3)
             customCell.layer.borderColor = UIColor.systemGray3.cgColor

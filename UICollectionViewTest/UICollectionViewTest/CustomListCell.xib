@@ -54,6 +54,13 @@
                             </stackView>
                         </subviews>
                     </stackView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Bw-BD-Q49">
+                        <rect key="frame" x="8" y="84" width="364" height="1"/>
+                        <color key="backgroundColor" systemColor="systemGray3Color"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="KwF-Wp-C1H"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 <constraints>
@@ -62,10 +69,13 @@
                     <constraint firstAttribute="bottom" secondItem="Fgd-gL-woN" secondAttribute="bottom" constant="8" id="R5c-HW-PaX"/>
                     <constraint firstItem="5uH-4C-41E" firstAttribute="width" secondItem="5Xd-JT-aGe" secondAttribute="width" multiplier="1:6" id="dul-EH-Bs2"/>
                     <constraint firstAttribute="bottom" secondItem="5uH-4C-41E" secondAttribute="bottom" constant="8" id="kTu-0y-d2V"/>
+                    <constraint firstAttribute="trailing" secondItem="9Bw-BD-Q49" secondAttribute="trailing" id="kxc-fR-Klk"/>
                     <constraint firstItem="Fgd-gL-woN" firstAttribute="top" secondItem="5Xd-JT-aGe" secondAttribute="top" constant="8" id="l0v-pw-NPk"/>
                     <constraint firstItem="5uH-4C-41E" firstAttribute="top" secondItem="5Xd-JT-aGe" secondAttribute="top" constant="8" id="mGL-wG-Wdz"/>
                     <constraint firstItem="Fgd-gL-woN" firstAttribute="leading" secondItem="5uH-4C-41E" secondAttribute="trailing" constant="8" id="qrm-eO-v54"/>
+                    <constraint firstAttribute="bottom" secondItem="9Bw-BD-Q49" secondAttribute="bottom" id="vz4-ef-b7V"/>
                     <constraint firstItem="5uH-4C-41E" firstAttribute="leading" secondItem="5Xd-JT-aGe" secondAttribute="leading" constant="8" id="yZE-KX-QZg"/>
+                    <constraint firstItem="9Bw-BD-Q49" firstAttribute="leading" secondItem="5Xd-JT-aGe" secondAttribute="leading" constant="8" id="zsF-jT-wNQ"/>
                 </constraints>
             </collectionViewCellContentView>
             <size key="customSize" width="372" height="85"/>
@@ -82,6 +92,9 @@
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray3Color">
+            <color red="0.7803921568627451" green="0.7803921568627451" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
