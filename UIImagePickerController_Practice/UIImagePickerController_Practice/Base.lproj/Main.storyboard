@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="UIImagePickerController_Practice" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aqa-Bs-AX0">
+                                <rect key="frame" x="20" y="84" width="374" height="122.5"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T2M-sX-Tcc">
+                                        <rect key="frame" x="0.0" y="0.0" width="122.5" height="122.5"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="button" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d4d-kP-h5r">
+                                                <rect key="frame" x="0.0" y="0.0" width="122.5" height="122.5"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="d4d-kP-h5r" secondAttribute="height" multiplier="1:1" id="MYl-33-THY"/>
+                                                </constraints>
+                                                <color key="tintColor" systemColor="systemGray5Color"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="filled" image="plus" catalog="system">
+                                                    <color key="baseForegroundColor" systemColor="systemBlueColor"/>
+                                                    <color key="baseBackgroundColor" systemColor="systemGray5Color"/>
+                                                </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="touchUpImagePlusButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ahX-EV-dYS"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="T2M-sX-Tcc" firstAttribute="height" secondItem="6qn-ME-LUy" secondAttribute="height" id="5jX-oe-btb"/>
+                                    <constraint firstItem="T2M-sX-Tcc" firstAttribute="leading" secondItem="IyD-5x-EnA" secondAttribute="leading" id="DpC-QZ-SCS"/>
+                                    <constraint firstItem="T2M-sX-Tcc" firstAttribute="trailing" secondItem="IyD-5x-EnA" secondAttribute="trailing" id="JGS-dB-zTI"/>
+                                    <constraint firstItem="T2M-sX-Tcc" firstAttribute="top" secondItem="IyD-5x-EnA" secondAttribute="top" id="awi-fT-3iq"/>
+                                    <constraint firstItem="T2M-sX-Tcc" firstAttribute="bottom" secondItem="IyD-5x-EnA" secondAttribute="bottom" id="iRu-Hq-QqM"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="IyD-5x-EnA"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="6qn-ME-LUy"/>
+                            </scrollView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="76r-n9-AIT">
+                                <rect key="frame" x="20" y="226.5" width="374" height="163.5"/>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="Lg9-66-dEi">
+                                <rect key="frame" x="20" y="410" width="374" height="178"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="상품명" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="faN-t8-EhS">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Kq2-bv-T0S">
+                                        <rect key="frame" x="0.0" y="48" width="374" height="34"/>
+                                        <subviews>
+                                            <textField opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="상품가격" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cbX-fT-0hQ">
+                                                <rect key="frame" x="0.0" y="0.0" width="267" height="34"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <segmentedControl opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="G78-8s-PRF">
+                                                <rect key="frame" x="277" y="0.0" width="97" height="35"/>
+                                                <segments>
+                                                    <segment title="KRW"/>
+                                                    <segment title="USD"/>
+                                                </segments>
+                                            </segmentedControl>
+                                        </subviews>
+                                    </stackView>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="할인금액" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ecI-0m-vMH">
+                                        <rect key="frame" x="0.0" y="96" width="374" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="재고수량" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="neF-hM-QUn">
+                                        <rect key="frame" x="0.0" y="144" width="374" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Lg9-66-dEi" firstAttribute="top" secondItem="76r-n9-AIT" secondAttribute="bottom" constant="20" id="6BB-b2-ErP"/>
+                            <constraint firstItem="d4d-kP-h5r" firstAttribute="height" secondItem="6Tk-OE-BBY" secondAttribute="height" multiplier="0.15" id="8Ac-YK-LFO"/>
+                            <constraint firstItem="aqa-Bs-AX0" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="40" id="XUp-Xu-Lf8"/>
+                            <constraint firstItem="76r-n9-AIT" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="f2C-Ez-o3U"/>
+                            <constraint firstItem="76r-n9-AIT" firstAttribute="top" secondItem="aqa-Bs-AX0" secondAttribute="bottom" constant="20" id="fuc-yA-Get"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="aqa-Bs-AX0" secondAttribute="trailing" constant="20" id="j5T-cH-mvz"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="76r-n9-AIT" secondAttribute="trailing" constant="20" id="lvF-cb-VGU"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="76r-n9-AIT" secondAttribute="bottom" constant="472" id="nrX-9g-12V"/>
+                            <constraint firstItem="aqa-Bs-AX0" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="osx-xr-Myh"/>
+                            <constraint firstItem="Lg9-66-dEi" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="sEt-Vo-Pjl"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Lg9-66-dEi" secondAttribute="trailing" constant="20" id="xJO-4T-upi"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="imagePlusButton" destination="d4d-kP-h5r" id="EIP-QW-w80"/>
+                        <outlet property="scrollView" destination="aqa-Bs-AX0" id="SSP-jh-pCK"/>
+                        <outlet property="stackView" destination="T2M-sX-Tcc" id="FXi-3T-dao"/>
+                        <outlet property="testImageView" destination="76r-n9-AIT" id="QbZ-YK-W1P"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="28.985507246376812" y="69.642857142857139"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="plus" catalog="system" width="128" height="113"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGray5Color">
+            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
