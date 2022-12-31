@@ -18,7 +18,6 @@ class ViewController: UIViewController {
         moveView()
 //        moveView2()
     }
-    
     // 가속도
     private func moveView() {
         UIView.animate(withDuration: 2, delay: 0, options: .curveLinear) {
